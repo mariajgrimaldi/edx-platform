@@ -1446,7 +1446,8 @@
 
       border-top: ($baseline/4) solid $m-gray-d4;
       padding: $baseline ($baseline*1.5);
-      background: $light-300;
+      background: #F2F0EF;
+      // background: $light-300;
 
       &:last-child {
         margin-bottom: 0;
@@ -1507,7 +1508,8 @@
     }
 
     .register-choice-audit {
-      border-color: $light-700;
+      // border-color: $light-700;
+      border-color: #D7D3D1;
 
       .deco-ribbon {
         position: relative;
@@ -1527,11 +1529,15 @@
 
       .action-select input {
         @extend .btn-outline-primary;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        font-weight: 500 !important;
       }
     }
 
     .register-choice-certificate {
-      border-color: $primary-500;
+      // border-color: $primary-500;
+      border-color: #00262B;
       position: relative;
 
       .deco-ribbon {
@@ -1566,12 +1572,8 @@
       }
 
       .action-select button[name="verified_mode"] {
+        font-weight: 500 !important;
         @extend .btn-primary;
-        // font-weight: 600;
-        // padding: 10px 15px;
-        // background: $primary-500;
-        // border-radius: 0;
-        // box-shadow: none !important;
       }
 
       // extra register options/info
