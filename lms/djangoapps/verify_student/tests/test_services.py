@@ -116,6 +116,19 @@ class TestIDVerificationService(ModuleStoreTestCase):
 
         self.assertEqual(expected_user_ids, verified_user_ids)
 
+    def test_get_verify_location(self):
+        """
+        Tests for the path to the IDV flow
+        """
+        no_course_id_path = IDVerificationService.get_verify_location()
+        course_id_path = IDVerificationService.get_verify_location('course-v1:edX+DemoX+Demo_Course')
+        expected_path = '{}/id-verification'.format(settings.ACCOUNT_MICROFRONTEND_URL)
+        self.assertEqual(no_course_id_path, expected_path)
+        self.assertEqual(
+            course_id_path,
+            expected_path + '?course_id=course-v1%3AedX%2BDemoX%2BDemo_Course'
+        )
+
 
 @patch.dict(settings.VERIFY_STUDENT, FAKE_SETTINGS)
 @ddt.ddt
