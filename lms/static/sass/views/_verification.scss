@@ -1526,7 +1526,7 @@
       }
 
       .action-select input {
-        @extend %btn-primary-blue;
+        @extend .btn-outline-primary;
       }
     }
 
@@ -1566,11 +1566,12 @@
       }
 
       .action-select button[name="verified_mode"] {
-        font-weight: 600;
-        padding: 10px 15px;
-        background: $primary-500;
-        border-radius: 0;
-        box-shadow: none !important;
+        @extend .btn-primary;
+        // font-weight: 600;
+        // padding: 10px 15px;
+        // background: $primary-500;
+        // border-radius: 0;
+        // box-shadow: none !important;
       }
 
       // extra register options/info
