@@ -27,9 +27,6 @@ django-ipware<3.0.0
 # https://github.com/edx/edx-platform/pull/25766
 django-model-utils==4.1.0
 
-# 2.0.0 dropped support for Python 3.5
-django-pipeline<2.0.0
-
 # django-storages version 1.9 drops support for boto storage backend.
 django-storages<1.9
 
