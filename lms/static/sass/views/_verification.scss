@@ -81,7 +81,8 @@
   select,
   textarea {
     font-family: $font-family-sans-serif;
-    color: $m-gray-d1;
+    color: $gray-700;
+    // JK color: #454545
   }
 
   .copy {
@@ -1357,7 +1358,8 @@
     > .title {
       @extend %hd-lv2;
 
-      color: $m-blue-d1;
+      color: $primary-500;
+      // JK color: #00262B;
       border-bottom: none !important;
     }
 
@@ -1446,8 +1448,8 @@
 
       border-top: ($baseline/4) solid $m-gray-d4;
       padding: $baseline ($baseline*1.5);
-      background: #F2F0EF;
-      // background: $light-300;
+      // JK background: #F2F0EF;
+      background: $light-300;
 
       &:last-child {
         margin-bottom: 0;
@@ -1508,8 +1510,8 @@
     }
 
     .register-choice-audit {
-      // border-color: $light-700;
-      border-color: #D7D3D1;
+      border-color: $light-700;
+      // JK border-top: #D7D3D1;
 
       .deco-ribbon {
         position: relative;
@@ -1532,12 +1534,14 @@
         box-shadow: none !important;
         border-radius: 0 !important;
         font-weight: 500 !important;
+        color: $primary-500 !important;
+         // JK color: #00262B;
       }
     }
 
     .register-choice-certificate {
-      // border-color: $primary-500;
-      border-color: #00262B;
+      border-color: $primary-500;
+      // JK border-color: #00262B;
       position: relative;
 
       .deco-ribbon {
