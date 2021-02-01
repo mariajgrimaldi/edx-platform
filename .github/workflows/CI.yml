@@ -46,6 +46,9 @@ jobs:
               source /tmp/workspace/venv/bin/activate
 
               # All files listed here must be included in the cache key for pip packages.
+              pip install --upgrade pip==20.0.2
+              pip install setuptools==44.1.0
+              pip3 install wheel
               pip install --exists-action w -r requirements/edx/django.txt
               pip install --exists-action w -r requirements/edx/testing.txt
               pip install --exists-action w -r requirements/edx/paver.txt
