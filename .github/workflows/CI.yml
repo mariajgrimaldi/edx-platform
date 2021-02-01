@@ -31,6 +31,10 @@ jobs:
           path: /tmp/workspace/venv
           key: v1-${{ hashFiles('.github/workflows/CI.yml') }}-pip-deps-${{ hashFiles('requirements/edx/base.txt') }}-${{ hashFiles('requirements/edx/testing.txt') }}-${{ hashFiles('requirements/edx/django.txt') }}-${{ hashFiles('requirements/edx/base.txt') }}
 
+
+      - name: Install apt packages
+        run: sudo apt-get install python3-dev python3-pip python3-venv python3-wheel -y
+
       - name: Install pip packages
         if: steps.cache-pip-packages.outputs.cache-hit != 'true'
         run: |
@@ -40,8 +44,6 @@ jobs:
               [ ! -f /tmp/workspace/venv/bin/activate ] && python3 -m venv /tmp/workspace/venv
 
               source /tmp/workspace/venv/bin/activate
-
-              pip install wheel
 
               # All files listed here must be included in the cache key for pip packages.
               pip install --exists-action w -r requirements/edx/django.txt
