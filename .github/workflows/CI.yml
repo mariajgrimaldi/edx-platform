@@ -67,6 +67,9 @@ jobs:
   lms_unit_tests:
     needs: build
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        shard-value: [1, 2, 3, 4, 5, 6, 7, 8, 9]
     services:
       mongodb:
         image: mongo:3.6
@@ -75,6 +78,7 @@ jobs:
     env:
       NO_PREREQ_INSTALL: "true"
       TEST_SUIT: "lms-unit"
+      SHARD: ${{ matrix.shard-value }}
 
     steps:
       - name: Checkout
@@ -103,7 +107,7 @@ jobs:
         run: |
               source /tmp/workspace/venv/bin/activate
               export PATH=$PATH:$(npm bin)
-              paver test_system -s lms --cov-args="-p"
+              ./scripts/all-tests.sh
 
 
   cms_unit_tests:
@@ -145,7 +149,7 @@ jobs:
         run: |
               source /tmp/workspace/venv/bin/activate
               export PATH=$PATH:$(npm bin)
-              paver test_system -s cms --cov-args="-p"
+              ./scripts/all-tests.sh
 
   lib_unit_tests:
     needs: build
@@ -185,7 +189,7 @@ jobs:
       - name: Run tests
         run: |
               source /tmp/workspace/venv/bin/activate
-              paver test_lib --cov-args="-p"
+              ./scripts/all-tests.sh
 
   javascript_tests:
     needs: build
@@ -220,14 +224,18 @@ jobs:
         run: |
               source /tmp/workspace/venv/bin/activate
               export PATH=$PATH:node_modules/.bin
-              xvfb-run --server-args="-screen 0 1280x1024x24" paver test_js --coverage
+              ./scripts/all-tests.sh
 
   quality_tests:
     needs: build
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        shard-value: [1, 2, 3, 4]
     env:
       NO_PREREQ_INSTALL: "true"
       TEST_SUITE: "quality"
+      SHARD: ${{ matrix.shard-value }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
