@@ -100,7 +100,11 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
+        run: |
+              source /tmp/workspace/venv/bin/activate
+              export PATH=$PATH:$(npm bin)
+              paver test_system -s lms --cov-args="-p"
+
 
   cms_unit_tests:
     needs: build
@@ -138,7 +142,10 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
+        run: |
+              source /tmp/workspace/venv/bin/activate
+              export PATH=$PATH:$(npm bin)
+              paver test_system -s cms --cov-args="-p"
 
   lib_unit_tests:
     needs: build
@@ -176,7 +183,9 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
+        run: |
+              source /tmp/workspace/venv/bin/activate
+              paver test_lib --cov-args="-p"
 
   javascript_tests:
     needs: build
@@ -208,7 +217,11 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
+        run: |
+              source /tmp/workspace/venv/bin/activate
+              export PATH=$PATH:node_modules/.bin
+              karma --version
+              xvfb-run --server-args="-screen 0 1280x1024x24" paver test_js --coverage
 
   quality_tests:
     needs: build
@@ -240,4 +253,7 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: source /tmp/workspace/venv/bin/activate &&  ./scripts/all-tests.sh
+        run: |
+              source /tmp/workspace/venv/bin/activate
+              export PATH=$PATH:$(npm bin)
+              ./scripts/all-tests.sh
