@@ -23,6 +23,10 @@ doCheckVars() {
     elif [ -n "$JENKINS_HOME" ] ; then
         source scripts/jenkins-common.sh
         SCRIPT_TO_RUN=scripts/generic-ci-tests.sh
+
+    elif [ -n "$GITHUB_ACTIONS" ] ; then
+        SCRIPT_TO_RUN=scripts/generic-ci-tests.sh
+
     fi
 }
 
