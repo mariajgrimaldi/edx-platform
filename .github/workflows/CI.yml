@@ -100,7 +100,7 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: ./scripts/all-tests.sh
+        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
 
   cms_unit_tests:
     needs: build
@@ -138,7 +138,7 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: ./scripts/all-tests.sh
+        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
 
   lib_unit_tests:
     needs: build
@@ -176,7 +176,7 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: ./scripts/all-tests.sh
+        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
 
   javascript_tests:
     needs: build
@@ -208,7 +208,7 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: ./scripts/all-tests.sh
+        run: source /tmp/workspace/venv/bin/activate && ./scripts/all-tests.sh
 
   quality_tests:
     needs: build
@@ -240,4 +240,4 @@ jobs:
               pip install -r requirements/edx/testing.txt
 
       - name: Run tests
-        run: ./scripts/all-tests.sh
+        run: source /tmp/workspace/venv/bin/activate &&  ./scripts/all-tests.sh
