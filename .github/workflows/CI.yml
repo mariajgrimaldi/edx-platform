@@ -220,7 +220,6 @@ jobs:
         run: |
               source /tmp/workspace/venv/bin/activate
               export PATH=$PATH:node_modules/.bin
-              karma --version
               xvfb-run --server-args="-screen 0 1280x1024x24" paver test_js --coverage
 
   quality_tests:
