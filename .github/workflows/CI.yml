@@ -84,6 +84,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install MongoDB
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo apt-get install -y mongodb-org=3.6.14 mongodb-org-server=3.6.14 mongodb-org-shell=3.6.14 mongodb-org-mongos=3.6.14 mongodb-org-tools=3.6.14
+
       - name: Cache pip dependencies
         id: cache-pip-packages
         uses: actions/cache@v2
@@ -126,6 +134,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install MongoDB
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo apt-get install -y mongodb-org=3.6.14 mongodb-org-server=3.6.14 mongodb-org-shell=3.6.14 mongodb-org-mongos=3.6.14 mongodb-org-tools=3.6.14
+
       - name: Cache pip dependencies
         id: cache-pip-packages
         uses: actions/cache@v2
@@ -166,6 +182,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Install MongoDB
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-org
+          sudo apt-get install -y mongodb-org=3.6.14 mongodb-org-server=3.6.14 mongodb-org-shell=3.6.14 mongodb-org-mongos=3.6.14 mongodb-org-tools=3.6.14
 
       - name: Cache pip dependencies
         id: cache-pip-packages
