@@ -292,4 +292,4 @@ jobs:
         run: |
               source /tmp/workspace/venv/bin/activate
               export PATH=$PATH:$(npm bin)
-              ./scripts/all-tests.sh
+              bash scripts/all-tests.sh
